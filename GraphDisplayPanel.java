@@ -16,8 +16,8 @@ public class GraphDisplayPanel extends JPanel implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private static final double plane_reduce_rate = 0.1, color_rate = 0.8;
 	private static final Color[] function_color = new Color[] {Color.RED, Color.BLUE, Color.GREEN,
-																Color.MAGENTA, Color.ORANGE, Color.CYAN, Color.PINK,
-																Color.LIGHT_GRAY, Color.GRAY, Color.DARK_GRAY};
+		Color.MAGENTA, Color.ORANGE, Color.CYAN, Color.PINK,
+		Color.LIGHT_GRAY, Color.GRAY, Color.DARK_GRAY};
 	private static final int xGapMaxCount = 20, yGapMaxCount = 20;
 	
 	private ArrayList<ArrayList<Point2D.Double>> functions;
@@ -102,8 +102,8 @@ public class GraphDisplayPanel extends JPanel implements Serializable{
     }
     
     /**
-     * ±×·¡ÇÁ¸¦ Ãß°¡ÇÑ´Ù.
-     * @param function Ãß°¡µÉ ÇÔ¼ö
+     * ê·¸ë˜í”„ë¥¼ ì¶”ê°€í•œë‹¤.
+     * @param function ì¶”ê°€ë  í•¨ìˆ˜
      */
     public void add_graph(ArrayList<Point2D.Double> function) {
 		++functionCount;
@@ -113,9 +113,9 @@ public class GraphDisplayPanel extends JPanel implements Serializable{
 	}
     
     /**
-     * ±×·¡ÇÁ¸¦ Á¦°ÅÇÑ´Ù.
-     * @param index Á¦°ÅÇÒ ±×·¡ÇÁÀÇ ÀÎµ¦½º
-     * @return ±×·¡ÇÁ Á¦°Å ¼º°ø ¿©ºÎ (Á¦°Å ¼º°øÀº true, Á¦°Å ½ÇÆĞ´Â false.)
+     * ê·¸ë˜í”„ë¥¼ ì œê±°í•œë‹¤.
+     * @param index ì œê±°í•  ê·¸ë˜í”„ì˜ ì¸ë±ìŠ¤
+     * @return ê·¸ë˜í”„ ì œê±° ì„±ê³µ ì—¬ë¶€ (ì œê±° ì„±ê³µì€ true, ì œê±° ì‹¤íŒ¨ëŠ” false.)
      */
     public boolean remove_graph(int index) {
     	if(index < 0 || index > functionCount) return false;
@@ -127,9 +127,9 @@ public class GraphDisplayPanel extends JPanel implements Serializable{
 	}
 	
 	/**
-	 * ±×·¡ÇÁ¸¦ ±×¸®±â À§ÇÑ ¼³Á¤.
-	 * x°ªÀÇ ÃÖ¼Ò°ª, ÃÖ´ë°ª, ¹üÀ§¸¦ ±¸ÇÏ°í y°ªµµ ÃÖ¼Ò°ª, ÃÖ´ë°ª, ¹üÀ§¸¦ ±¸ÇÑ´Ù.
-	 * xÃà°ú yÃàÀÌ º¸¿©¾ß ÇÏ¹Ç·Î, °¢ ¹üÀ§ÀÇ ÃÖ¼Ò°ªÀÌ 0º¸´Ù Å©°Å³ª ÃÖ´ë°ªÀÌ 0º¸´Ù ÀÛÀ¸¸é 0À¸·Î ¸ÂÃá´Ù.
+	 * ê·¸ë˜í”„ë¥¼ ê·¸ë¦¬ê¸° ìœ„í•œ ì„¤ì •.
+	 * xê°’ì˜ ìµœì†Œê°’, ìµœëŒ€ê°’, ë²”ìœ„ë¥¼ êµ¬í•˜ê³  yê°’ë„ ìµœì†Œê°’, ìµœëŒ€ê°’, ë²”ìœ„ë¥¼ êµ¬í•œë‹¤.
+	 * xì¶•ê³¼ yì¶•ì´ ë³´ì—¬ì•¼ í•˜ë¯€ë¡œ, ê° ë²”ìœ„ì˜ ìµœì†Œê°’ì´ 0ë³´ë‹¤ í¬ê±°ë‚˜ ìµœëŒ€ê°’ì´ 0ë³´ë‹¤ ì‘ìœ¼ë©´ 0ìœ¼ë¡œ ë§ì¶˜ë‹¤.
 	 */
 	public void set_range() {
 		if(functionCount > 0) {
@@ -150,27 +150,27 @@ public class GraphDisplayPanel extends JPanel implements Serializable{
 	}
 	
 	/**
-	 * ÇÔ¼öÀÇ x°ªÀ» È­¸éÀÇ x°ªÀ¸·Î º¯È¯½ÃÄÑÁØ´Ù.
-	 * @param x			ÇÔ¼öÀÇ x°ª
-	 * @return			È­¸éÀÇ x°ª
+	 * í•¨ìˆ˜ì˜ xê°’ì„ í™”ë©´ì˜ xê°’ìœ¼ë¡œ ë³€í™˜ì‹œì¼œì¤€ë‹¤.
+	 * @param x			í•¨ìˆ˜ì˜ xê°’
+	 * @return			í™”ë©´ì˜ xê°’
 	 */
 	public double transX(double x) {
 		return (x - xMinDraw) * panelWidth / xDrawRange;
 	}
 	
 	/**
-	 * ÇÔ¼öÀÇ y°ªÀ» È­¸éÀÇ x°ªÀ¸·Î º¯È¯½ÃÄÑÁØ´Ù.
-	 * @param y			ÇÔ¼öÀÇ y°ª
-	 * @return			È­¸éÀÇ y°ª
+	 * í•¨ìˆ˜ì˜ yê°’ì„ í™”ë©´ì˜ xê°’ìœ¼ë¡œ ë³€í™˜ì‹œì¼œì¤€ë‹¤.
+	 * @param y			í•¨ìˆ˜ì˜ yê°’
+	 * @return			í™”ë©´ì˜ yê°’
 	 */
 	public double transY(double y) {
 		return panelHeight - (y - yMinDraw) * panelHeight / yDrawRange;
 	}
 	
 	/**
-	 * index¹øÂ°ÀÇ ÇÔ¼ö µ¥ÀÌÅÍ¸¦ ¹İÈ¯ÇÑ´Ù.
-	 * @param index »öÀÎ
-	 * @return	index¹øÂ°ÀÇ ÇÔ¼ö µ¥ÀÌÅÍ
+	 * indexë²ˆì§¸ì˜ í•¨ìˆ˜ ë°ì´í„°ë¥¼ ë°˜í™˜í•œë‹¤.
+	 * @param index ìƒ‰ì¸
+	 * @return	indexë²ˆì§¸ì˜ í•¨ìˆ˜ ë°ì´í„°
 	 */
 	public ArrayList<Point2D.Double> get_function(int index) {
 		return functions.get(index);
